@@ -153,6 +153,9 @@ export default function LiveTextEditor() {
     );
   }, [query, articles]);
 
+  // --- Word count
+  const wordCount = useMemo(() => countWords(content), [content]);
+
   return (
     <div className="min-h-screen font-serif text-slate-800 selection:bg-fuchsia-200/60">
       <div className="grid grid-cols-1 md:grid-cols-[280px_1fr]">
@@ -283,6 +286,11 @@ export default function LiveTextEditor() {
                   className="prose text-sm prose-slate max-w-none min-h-[50vh] bg-white/70 outline-none"
                   suppressContentEditableWarning
                 ></div>
+
+                {/* Word Counter */}
+                <div className="mt-2 text-right text-xs text-slate-500">
+                  {wordCount} {wordCount === 1 ? "word" : "words"}
+                </div>
               </div>
 
               {saveError && (
@@ -306,4 +314,11 @@ function debounce(fn, delay) {
       fn(...args);
     }, delay);
   };
+}
+
+// --- Helper function for word count
+function countWords(html) {
+  if (!html) return 0;
+  const text = html.replace(/<[^>]+>/g, " ").trim();
+  return text.split(/\s+/).filter(Boolean).length;
 }
