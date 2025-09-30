@@ -174,7 +174,7 @@ export default function LiveTextEditor() {
                 <button
                   onClick={createNewArticle}
                   disabled={isCreating}
-                  className="inline-flex items-center gap-2 bg-white text-slate-800 px-4 py-2 rounded-2xl border border-slate-300 shadow-sm hover:bg-slate-50 focus:outline-none disabled:opacity-50"
+                  className="inline-flex text-sm items-center bg-sky-600 text-white gap-2 text-slate-800 px-4 py-2 rounded-md border border-slate-300 hover:bg-sky-500 hover:cursor-pointer focus:outline-none disabled:opacity-50"
                 >
                   {isCreating ? (
                     <Loader className="h-4 w-4 animate-spin" />
@@ -186,13 +186,13 @@ export default function LiveTextEditor() {
                   {/* Saving animation */}
                   <div className="flex gap-1 ml-2">
                     <div
-                      className={`${isSaving ? "dot" : ""} bg-green-500 w-2 h-2 shadow-md rounded-full`}
+                      className={`${isSaving ? "dot bg-gray-800" : ""} bg-white w-2 h-2 shadow-md rounded-full`}
                     ></div>
                     <div
-                      className={`${isSaving ? "dot dot-delay-2" : ""} bg-green-500 w-2 h-2 shadow-md rounded-full`}
+                      className={`${isSaving ? "dot bg-gray-800 dot-delay-2" : ""} bg-white w-2 h-2 shadow-md rounded-full`}
                     ></div>
                     <div
-                      className={`${isSaving ? "dot dot-dealay-1" : ""} bg-green-500 w-2 h-2 shadow-md rounded-full`}
+                      className={`${isSaving ? "dot bg-gray-800 dot-dealay-1" : ""} bg-white w-2 h-2 shadow-md rounded-full`}
                     ></div>
                   </div>
                 </button>
@@ -202,7 +202,7 @@ export default function LiveTextEditor() {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Search scenes…"
-                    className="w-full rounded-xl border border-slate-200 bg-white/60 px-9 py-2 text-sm outline-none focus:ring-2 focus:ring-violet-500"
+                    className="w-full rounded-md border border-slate-200 bg-white/60 px-9 py-2 text-sm outline-none focus:ring-2 focus:ring-violet-500"
                   />
                   <Search className="h-4 w-4 absolute left-3 top-2.5 opacity-60" />
                 </div>
@@ -211,9 +211,9 @@ export default function LiveTextEditor() {
                   {filtered.map((a) => (
                     <div
                       key={a._id}
-                      className={`group flex items-center gap-2 rounded-xl px-3 py-2 border ${
+                      className={`group flex items-center gap-2 rounded-md px-3 py-2 border ${
                         selectedId === a._id
-                          ? "border-violet-400 bg-violet-50"
+                          ? "border-sky-600 border-2"
                           : "border-transparent hover:border-slate-200 hover:bg-slate-50"
                       }`}
                     >
